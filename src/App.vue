@@ -1,32 +1,57 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
     <router-view/>
   </div>
 </template>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  outline: none;
 }
 
-#nav {
-  padding: 30px;
+body {
+  background-color: #0a0a0a;
+  color: #ffff;
+  font-family: 'Montserrat', sans-serif;
+}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+.container {
+  width: 93%;
+  max-width: 480px;
+  margin: 0 auto;
+}
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+button, input {
+  height: 50px;
+  background-color: #ffffff0e;
+  border-radius: 10px;
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+}
+
+button {
+  padding: 0 13px;
+}
+
+input {
+  padding-left: 15px;
+  color: #fff;
+}
+
+h1 {
+  font-size: 38px;
+}
+
+h2 {
+  font-size: 25px;
+}
+
+a {
+  color: #1771F1;
 }
 </style>

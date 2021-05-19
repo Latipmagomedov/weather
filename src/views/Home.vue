@@ -8,20 +8,19 @@
         </p>
       </div>
 
-      <form class="home__search">
+      <form
+        @submit.prevent="
+          $router.push({ path: '/search-result', query: { city: search } })
+        "
+        class="home__search"
+      >
         <input
           type="text"
           class="home__search-inp"
           placeholder="Поиск городов"
           v-model="search"
         />
-        <button
-          type="submit"
-          class="home__search-btn"
-          @click="
-            $router.push({ path: '/search-result', query: { city: search } })
-          "
-        ></button>
+        <button type="submit" class="home__search-btn"></button>
       </form>
 
       <div class="home__cities">
@@ -63,7 +62,7 @@ export default {
       options: {
         rewind: true,
         perPage: 2,
-        gap: "1rem",
+        gap: "10px",
       },
       cities: [
         "Махачкала",
@@ -86,6 +85,10 @@ export default {
   display: flex;
   align-items: center;
   padding-bottom: 15px;
+  background-image: url(https://images.unsplash.com/photo-1496568816309-51d7c20e3b21?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .home__description {
@@ -152,7 +155,7 @@ export default {
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: #000000b0;
+            background-color: #0000003b;
           }
 
           .home__cities-name {

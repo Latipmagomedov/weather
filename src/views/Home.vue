@@ -108,11 +108,18 @@ export default {
   border-radius: 13px;
   display: flex;
   align-items: center;
-  background-color: #131313;
+  background-color: #ffffff38;
 
   input {
     width: 85%;
     background-color: transparent;
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+
+    &::placeholder {
+      color: #ffffffcb;
+      font-weight: 600;
+    }
   }
 
   button {

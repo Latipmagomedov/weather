@@ -13,32 +13,89 @@
           type="text"
           class="home__search-inp"
           placeholder="Поиск городов"
+          v-model="search"
         />
-        <button type="submit" class="home__search-btn"></button>
+        <button
+          type="submit"
+          class="home__search-btn"
+          @click="
+            $router.push({ path: '/search-result', query: { city: search } })
+          "
+        ></button>
       </form>
 
       <div class="home__cities">
         <h2 class="home__cities-title">Города</h2>
 
-        <div class="home__cities-slider"></div>
+        <div class="home__cities-slider">
+          <splide :options="options">
+            <splide-slide v-for="(city, index) in cities" :key="index">
+              <router-link
+                :to="{ path: '/search-result', query: { city: city } }"
+              >
+                <div class="home__cities-slide">
+                  <div class="home__cities-filter">
+                    <h3 class="home__cities-name">{{ city }}</h3>
+                  </div>
+                </div>
+              </router-link>
+            </splide-slide>
+          </splide>
+        </div>
       </div>
     </div>
   </section>
 </template>
 
 <script>
-export default {};
+import { Splide, SplideSlide } from "@splidejs/vue-splide";
+
+import "@splidejs/splide/dist/css/themes/splide-default.min.css";
+
+export default {
+  components: {
+    Splide,
+    SplideSlide,
+  },
+  data() {
+    return {
+      search: "",
+      options: {
+        rewind: true,
+        perPage: 2,
+        gap: "1rem",
+      },
+      cities: [
+        "Махачкала",
+        "Дербент",
+        "Москва",
+        "Грозный",
+        "Хасавюрт",
+        "Кизляр",
+        "Кизилюрт",
+      ],
+    };
+  },
+};
 </script>
 
 <style lang="scss">
+.home {
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  padding-bottom: 15px;
+}
+
 .home__description {
   max-width: 300px;
-  margin-top: 80px;
 
   .home__subtitle {
+    max-width: 260px;
     margin-top: 5px;
     color: #ffffffe5;
-    font-size: 15px;
+    font-size: 14px;
   }
 }
 
@@ -69,5 +126,65 @@ export default {};
 
 .home__cities {
   margin-top: 30px;
+
+  .home__cities-slider {
+    margin-top: 20px;
+
+    .splide__list {
+      .splide__slide {
+        a {
+          text-decoration: none;
+        }
+        .home__cities-slide {
+          position: relative;
+          width: 100%;
+          height: 300px;
+          border-radius: 13px;
+          background-image: url(../assets/image/cities/1.jpg);
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          overflow: hidden;
+
+          .home__cities-filter {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000000b0;
+          }
+
+          .home__cities-name {
+            position: absolute;
+            top: 80%;
+            left: 10%;
+            color: #fff;
+            text-decoration: none;
+          }
+        }
+      }
+
+      .splide__slide:nth-child(1n + 1) {
+        .home__cities-slide {
+          background-image: url(../assets/image/cities/1.jpg);
+        }
+      }
+      .splide__slide:nth-child(2n + 2) {
+        .home__cities-slide {
+          background-image: url(../assets/image/cities/2.jpg);
+        }
+      }
+      .splide__slide:nth-child(3n + 3) {
+        .home__cities-slide {
+          background-image: url(../assets/image/cities/3.jpg);
+        }
+      }
+    }
+
+    .splide__pagination {
+      margin-bottom: -50px;
+    }
+  }
 }
 </style>

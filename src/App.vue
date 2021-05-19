@@ -44,11 +44,11 @@ input {
 }
 
 h1 {
-  font-size: 38px;
+  font-size: 32px;
 }
 
 h2 {
-  font-size: 25px;
+  font-size: 23px;
 }
 
 a {

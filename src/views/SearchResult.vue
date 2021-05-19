@@ -83,6 +83,7 @@ export default {
   position: absolute;
   display: flex;
   align-items: center;
+  cursor: pointer;
   p {
     margin-left: 10px;
     color: #1771f1;
@@ -107,6 +108,7 @@ export default {
     align-items: center;
 
     p {
+      color: #1771f1;
       font-size: 33px;
       font-weight: 900;
     }
@@ -125,7 +127,7 @@ export default {
 
   .result__content-wind {
     margin-top: 40px;
-    font-size: 12px;
+    font-size: 15px;
   }
 }
 </style>
